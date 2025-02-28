@@ -80,3 +80,51 @@
 - CAP Theorem: trade-offs in distributed systems
 - Security: authentication & rate limiting
 - Monitoring: logging, tracing, and metrics
+
+## Computer architecture
+
+- Computers function through a layered system, each optimized for varying tasks
+- At the core:
+  - computers understand only 0s and 1s
+  - bit: 0 or 1
+  - byte (8 bits): represent a single character (A, 1)
+
+### Storage: where data is stored
+
+- To store the bits, we use computer disk storage
+
+#### Hard drive (non-volatile)
+
+- Doesn't require power to retain its content (non-volatile)
+- HDD: speed varies from 80 MB/s to 160 MB/s
+- SSD: speed varies from 500 MB/s to 3,5k MB/s
+- Long-term memory
+
+#### RAM (Random access memory) (volatile)
+
+- Requires power to retain its content (volatile)
+- It holds data structures, variables and application data
+- Deals with data that is currently in use or being processed
+- Short-term memory
+- Reading speed varies from 5k MB/s upwards
+
+#### Cache
+
+- Smaller than RAM, usually measured in MBs
+- CPU checks this first
+- Reduces average time to access data
+
+### CPU: where data is processed
+
+- Brain of the computer
+- Fetches, decodes and executes instructions
+- Process operations defined in programs
+- To process information written in high-level languages, the instructions are compiled
+- It can read/write from Cache, RAM, Disk
+
+### Motherboard
+
+- Connects everything (hard-disk, ram, cache and CPU)
+- Provides the pathways that allw the data flow between these components
+
+## High-level Architecture of a Production App
