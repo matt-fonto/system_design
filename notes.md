@@ -158,3 +158,18 @@
 ![high-level-archi-image](image.png)
 
 ## 4. Pillars of System Design
+
+### 4.1. What makes a good design? (SMER)
+
+- Scalability: system grows with user base
+- Maintainability: future developers can understand and improve system
+- Efficiency: making the best use of our resources
+- Reliability: planning for failure and building a system that behaves well when things don't work
+
+### 4.2 Key processes of system design
+
+- Moving data: ensuring data can flow well from one part of the system to another
+  - Speed and security
+- Storing data: access patterns, indexing strategies, backup solutions
+  - Security and availability
+- Transforming data: taking raw data and transforming it into meaningful information
