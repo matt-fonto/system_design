@@ -5,24 +5,39 @@
 
 ## Main Concepts Overview
 
-## 1. Scalability
+### 1. Scalability
 
-## 2. Load balancing
+- Vertical scaling (scaling up): Adding more resources to a single server (CPU, RAM)
+- Horizontal scaling (scaling out): Adding more machines to handle load (distributed architecture)
 
-## 3. Database design
+### 2. Load balancing
 
-## 4. Caching
+- Distributes incoming traffic across multiple servers to ensure availaibility and reliability
+- Techniques
+  - Round Robin: requests distributed sequentially
+  - Least connections: routes to the server with fewer connections
+  - Consistent hashing: ensures requests from the same client go to the same server
 
-## 5. Message queues and event-driven architecture
+### 3. Database design
 
-## 6. Microservices vs. Monoliths
+- SQL(Relational): Structured schema (MySQL, PostgresSQL)
+- NoSQL(Non-relational): Flexible schema (MongoDB)
+- Sharding: splitting a database into smaller pieces
+- Replication: duplicating data across multiple servers for redundancy
+- Indexing: improves query performance
 
-## 7. Consistency & Availability
+### 4. Caching
 
-## 8. CDN & Edge computing
+### 5. Message queues and event-driven architecture
 
-## 9. Security and authentication
+### 6. Microservices vs. Monoliths
 
-## 10. Observability & Monitoring
+### 7. Consistency & Availability
 
-### Summary
+### 8. CDN & Edge computing
+
+### 9. Security and authentication
+
+### 10. Observability & Monitoring
+
+#### Summary
