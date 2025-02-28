@@ -59,6 +59,24 @@
 
 ### 9. Security and authentication
 
+- OAuth2, JWT: Secure authentication mechanisms
+- Rate limiting: prevents abuse (e.g., API throttling)
+- Encryption: Data security in transit (TLS/SSL) and at rest
+
 ### 10. Observability & Monitoring
 
+- Logging (ELK Stack, Datadog): tracks system activity
+- Tracing (Jaeger, OpenTelemetry): understands request flow
+- Metrics (Prometheus, Grafana): tracks performance
+
 #### Summary
+
+- Scalability: handling growth (vertical vs. horizontal)
+- Loading balancing: distributing traffic
+- Databases: SQL vs. NoSQL, sharding, replication
+- Caching; storing frequently accessed data
+- Messaging queues: async processing
+- Microservices: decoupling services
+- CAP Theorem: trade-offs in distributed systems
+- Security: authentication & rate limiting
+- Monitoring: logging, tracing, and metrics
