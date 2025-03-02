@@ -295,7 +295,7 @@
 - Formal contract with our users. They define the minimum level of service we're committing to provide
 - If we affirm we offer 99.99% availability, but fail to do it, we might be request to pay refunds or compensations
 
-#### 4.3.2.3 Reliability, Fault Tolerance, Redundancy
+##### 4.3.2.3 Reliability, Fault Tolerance, Redundancy
 
 - Reliability: ensures the system works consistently
 - Fault tolerance: when things go wrong, how well our system handles unexpected failures or attacks
@@ -338,3 +338,62 @@ How long it takes to handle a single request
 ## 5. Networking basics
 
 - How computers communicate with each other
+
+### 5.1 IP Address
+
+- Unique identifies for each device on a network
+- IPv4 - 32-bit -> 4B available unique addresses
+- IPv6 - 128-bit -> 340T available unique addresses
+- When computers communicate over a network, they send/receive packets of data
+
+### 5.3 Data packet
+
+- Unit of data transmitted over a network
+- It consists of 3 main sections:
+
+1. Header (metadata): info for routing + handling the packet
+   - Source & Destination IP Address
+   - Protocol information (TCP, UDP, etc)
+   - Packet number (for reassembly in case of fragmentation)
+   - Checksum (error detection)
+   - TIME-to-Live (TTL) (prevents infinite loops)
+2. Payload (data): the actual data being transmitted (e.g., webpage, email, file, etc)
+
+### 5.2 Layers (from bottom to top)
+
+1. Physical layer: Transmits raw bit stream over a physical medium
+
+   - Physical structure
+   - Fiber, Wireless, Hubs, repeaters
+
+2. Data link layer: Defines the format of data on the network
+
+   - Frames
+   - Ethernet, PPP, switch, bridges
+
+3. Network layer: Dedices which physical path the data will take
+
+   - Packets
+   - IP, ICMP, IPSec, IGMP
+
+4. Transport layer: Transmits data using transmission protocols including TCP and UDP
+
+   - End-to-end connections
+   - TCP, UDP
+   - TCP (Transmission control protocol): Ensures reliable communication. Makes sure not only your packet arrives, but it arrives consitently
+   - UDP (User datagram protocol): Faster, but less reliable
+
+5. Session layer: Maintains connection and is responsible for controlling ports and sessions
+
+   - Sync & send to port
+   - API's, Sockets, WinSock
+
+6. Presentation layer: Ensures data is in a usable format and is where data encryption occurs
+
+   - Syntax layer
+   - SSL, SSH, IMAP, FTP, MPEG, JPEG
+
+7. Application layer: Human-computer interaction layer, where applications can access the network services
+
+   - End user layer
+   - HTTP, FTP, IRC, SSH, DNS
