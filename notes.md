@@ -15,7 +15,8 @@
   - [1.7. Consistency & Availability (CAP Theorem)](#17-consistency--availability-cap-theorem)
   - [1.8. CDN & Edge computing](#18-cdn--edge-computing)
   - [1.9. Security and authentication](#19-security-and-authentication)
-  - [1.10. Observability & Monitoring](#110-observability--monitoring) -[2. Computer architecture](#2-computer-architecture)
+  - [1.10. Observability & Monitoring](#110-observability--monitoring)
+- [2. Computer architecture](#2-computer-architecture)
   - [2.1. Storage: where data is stored](#21-storage-where-data-is-stored)
     - [2.1.1. Hard drive (non-volatile)](#211-hard-drive-non-volatile)
     - [2.1.2. RAM (Random access memory) (volatile)](#212-ram-random-access-memory-volatile)
@@ -266,11 +267,74 @@
 ### 4.3 CAP Theorem
 
 - It's a set of principles that guide us in making informed tradeoffs bewtween 3 key aspects of a distributed system: Consistency, Availability and Partition Tolerance
+- According to the CAP theorem, a distributed system can achieve ONLY 2 of the 3 at the same time
+- CAP theorem describes that it's not about finding the perfect solution, but the best solution for our specific use case
 
 #### 4.3.1 Consistency
 
-- Ensures that all nodes in the distributed system have the same data
+- Ensures that all nodes in the distributed system have the same data at the same time
+- One change to one nodes is reflected across all nodes
+- Ex: One change made to a Google docs is seen instantly by others
 
 #### 4.3.2 Availability
 
+- System is always operational and responsive to requests no matter what is happening the scenes
+- Is our system up and running when our users need it?
+- It's usually measured in % and aims at the golden 5 9's availability: **99.999%**
+  - 99.9% availability: 8.76 hours of downtime allowed per year
+  - 99.999% availability: 5 min. of downtime per year
+- It's measured in uptime/downtime
+
+##### 4.3.2.1 SLO - Service level objectives (uptime)
+
+- Setting goals for our systems performance and availability
+- Ex: our service should respond to request within 300ms 99.9% of the time
+
+##### 4.3.2.2 SLA - Service level agreements (downtime)
+
+- Formal contract with our users. They define the minimum level of service we're committing to provide
+- If we affirm we offer 99.99% availability, but fail to do it, we might be request to pay refunds or compensations
+
+#### 4.3.2.3 Reliability, Fault Tolerance, Redundancy
+
+- Reliability: ensures the system works consistently
+- Fault tolerance: when things go wrong, how well our system handles unexpected failures or attacks
+- Redundancy: if one part of our system fails, there's another ready to take its place
+
 #### 4.3.3 Partition tolerance
+
+- The ability of a system to continue functioning even when a network partition happen
+- If there is a disruption in communication between the nodes, the system still works
+  ![partition tolerance](image-1.png)
+- Ex: A group chat that continues happening even though one person loses connection
+
+![cap theorem](image-2.png)
+
+### 4.4 Speed
+
+#### 4.4.1 Throughput
+
+How much data our system can handle over a certain period of time
+
+##### 4.4.1.1 Server Throughput
+
+- How many client requests a server can handle in a given time frame
+- Measured in requests per second (RPS)
+
+##### 4.4.1.2 DB Throughput
+
+- How many number of queries a database can process in a second
+- Measured in queries per second (QPS)
+
+##### 4.4.1.3 Data Throughput
+
+- The amount of data transferred a network or processed by a system in a given period of time
+- Measured in bytes per second (B/s)
+
+#### 4.4.2 Latency
+
+How long it takes to handle a single request
+
+## 5. Networking basics
+
+- How computers communicate with each other
