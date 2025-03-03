@@ -36,6 +36,22 @@
     - [4.3.1 Consistency](#431-consistency)
     - [4.3.2 Availability](#432-availability)
     - [4.3.3 Partition tolerance](#433-partition-tolerance)
+  - [4.4 Speed](#44-speed)
+    - [4.4.1 Throughput](#441-throughput)
+    - [4.4.2 Latency](#442-latency)
+- [5. Networking basics](#5-networking-basics)
+  - [5.1 IP Address](#51-ip-address)
+  - [5.2 Data packet](#52-data-packet)
+  - [5.3 Layers (from bottom to top)](#53-layers-from-bottom-to-top)
+  - [5.4 Application layer (HTTP, WebSockets, WebRTC, MQTT, etc)](#54-application-layer-http-websockets-webrtc-mqtt-etc)
+    - [5.4.1 Email related protocols](#541-email-related-protocols)
+    - [5.4.2 File transfer](#542-file-transfer)
+- [6. API Design](#6-api-design)
+  - [6.1 API Paradigms](#61-api-paradigms)
+    - [Rest](#rest)
+    - [GraphQL](#graphql)
+    - [gRPC (Google Remote Procedure Call)](#grpc-google-remote-procedure-call)
+  - [6.2 Good Practices](#62-good-practices)
 
 <a name="1-main-concepts-overview"></a>
 
@@ -272,11 +288,15 @@
 
 #### 4.3.1 Consistency
 
+<a name="431-consistency"></a>
+
 - Ensures that all nodes in the distributed system have the same data at the same time
 - One change to one nodes is reflected across all nodes
 - Ex: One change made to a Google docs is seen instantly by others
 
 #### 4.3.2 Availability
+
+<a name="432-availability"></a>
 
 - System is always operational and responsive to requests no matter what is happening the scenes
 - Is our system up and running when our users need it?
@@ -301,6 +321,8 @@
 - Fault tolerance: when things go wrong, how well our system handles unexpected failures or attacks
 - Redundancy: if one part of our system fails, there's another ready to take its place
 
+<a name="433-partition-tolerance"></a>
+
 #### 4.3.3 Partition tolerance
 
 - The ability of a system to continue functioning even when a network partition happen
@@ -310,7 +332,11 @@
 
 ![cap theorem](image-2.png)
 
+<a name="44-speed"></a>
+
 ### 4.4 Speed
+
+<a name="441-throughput"></a>
 
 #### 4.4.1 Throughput
 
@@ -335,9 +361,13 @@ How much data our system can handle over a certain period of time
 
 How long it takes to handle a single request
 
+<a name="5-networking-basics"></a>
+
 ## 5. Networking basics
 
 - How computers communicate with each other
+
+<a name="51-ip-address"></a>
 
 ### 5.1 IP Address
 
@@ -346,7 +376,9 @@ How long it takes to handle a single request
 - IPv6 - 128-bit -> 340T available unique addresses
 - When computers communicate over a network, they send/receive packets of data
 
-### 5.3 Data packet
+<a name="52-data-packet"></a>
+
+### 5.2 Data packet
 
 - Unit of data transmitted over a network
 - It consists of 3 main sections:
@@ -359,7 +391,9 @@ How long it takes to handle a single request
    - TIME-to-Live (TTL) (prevents infinite loops)
 2. Payload (data): the actual data being transmitted (e.g., webpage, email, file, etc)
 
-### 5.2 Layers (from bottom to top)
+<a name="53-layers-from-bottom-to-top"></a>
+
+### 5.3 Layers (from bottom to top)
 
 1. Physical layer: Transmits raw bit stream over a physical medium
 
@@ -413,6 +447,8 @@ How long it takes to handle a single request
    - HTTP, FTP, IRC, SSH, DNS
      - DNS (Domain name system): Transforms human-friendly names into IP addresses
 
+<a name="54-application-layer-http-websockets-webrtc-mqtt-etc"></a>
+
 ### 5.3 Application layer (HTTP, WebSockets, WebRTC, MQTT, etc)
 
 - HTTP: HyperText Transfer Protocol:
@@ -427,11 +463,15 @@ How long it takes to handle a single request
   - Single, long-live connection
   - Used for live applications: chat, sport updates, stock market feeds. (where the action never stops)
 
+<a name="541-email-related-protocols"></a>
+
 #### 5.3.1 Email related protocols
 
 - SMTP: Email transmission across the internet
 - IMAP (Internet message access protocol): Used to retrieve emails from a server
 - POP3 (Post office protocol version 3): Used for downloading emails from a server
+
+<a name="542-file-transfer"></a>
 
 #### 5.3.2 File transfer
 
@@ -440,3 +480,49 @@ How long it takes to handle a single request
 - WebRTC: Enables browser-to-browser applications for voice calling, video chat, and file sharing (e.g., video chats)
 - MQTT: Lightweight messaging protocol for devices with low processing power (e.g.,IoT devices)
 - RPC (Remote procedure call): Executing code in one machine from another as if it were from the original machine
+
+<a name="6-api-design"></a>
+
+## 6. API Design
+
+- How CRUD operations are exposed to the UI
+  ![crud-operations](image-5.png)
+
+<a name="61-api-paradigms"></a>
+
+### 6.1 API Paradigms
+
+#### Rest
+
+- Stateless: every request must contain all information needed to understand and allow operation
+- Standard HTTP Methods
+- Can lead to over/under-fetching
+- Normally uses JSON
+
+#### GraphQL
+
+- Avoids over/under-fetching
+- Strongly typed schema based queries
+- Queries can impact server performance
+- Only POST requests
+- Responds with HTTP 200 -- even in case of errors
+
+#### gRPC (Google Remote Procedure Call)
+
+- Built on HTTP/2: multiplexing/server push
+- Uses protocol buffers
+- Efficient
+- Less human-readable
+- Requires HTTP/2 support
+
+<a name="62-good-practices"></a>
+
+### 6.2 Good Practices
+
+- Backward compatibility
+- Rate limiter
+- CORS (Cross-Origin Resource Sharing): controls which domains can have access to the API
+
+<a name="7-caching-and-cdn-content-delivery-networks"></a>
+
+## 7. Caching and CDN (Content Delivery Networks)
