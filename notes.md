@@ -526,3 +526,48 @@ How long it takes to handle a single request
 <a name="7-caching-and-cdn-content-delivery-networks"></a>
 
 ## 7. Caching and CDN (Content Delivery Networks)
+
+### 7.1 Caching
+
+- Used to improve performance and efficiency
+- Stores a copy of data in a temp storage (cache)
+- By taking this temp data, future requests can be served faster
+
+#### 7.2 Caching types
+
+### 7.2.1. Browser caching
+
+- This cache is store in a directory on the computer's hard drive managed by the browser
+- Stores HTML, CSS, and JS files on the user's local machine
+- Cache ratio = cache hits / (cache hits + cache misses) => higher-ratio represents a more effective cache
+  - Cache hit: requested data is found in cache
+  - Cache miss: requested data isn't found in cache. New fetch required
+- X-Cache header: tells if cache was hit or no
+
+### 7.2.2. Server caching
+
+- Frequently accessed data is stored on the server
+- Either stored on the server or on a separate cache server
+- Server checks the cache before querying the database
+
+  - If data is in cache, it is returned directly.
+    Otherwise, server queries the database, returns it to the user and stores it in the cache
+  - Tech: Redis
+
+#### 7.2.2.1. Types of cache writing
+
+- Write-around cache: data is written directly to permanent storage, by passing the cache
+  - Used when write performance is less critical
+- Write-through cache: data is written simultaneously to db and cache
+  - Ensures data consistency, but can be slower than `write-around cache`
+- Write-back cache: data is first written on cache, then db
+  - Improves write performance, but risk of losing data in case server cache crashes
+
+What about when the cache is full?
+
+- There are policies to decide what to do with the cache once it's full. E.G.:
+  - Least Recently Used (LRU)
+  - First in First Out (FIFO)
+  - Least Frequently Used (LFU)
+
+### CDN
