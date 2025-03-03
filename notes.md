@@ -375,13 +375,27 @@ How long it takes to handle a single request
 
    - Packets
    - IP, ICMP, IPSec, IGMP
+     - Public IP addresses: are unique across the internet
+     - Private IP addresses: are unique within local network
+     - IP + Port = unique identifier for a network service
+     - Ports:
+       - HTTP: 80
+       - HTTPS: 443
+       - SSH: 22
+       - MYSQL: 3306
 
 4. Transport layer: Transmits data using transmission protocols including TCP and UDP
 
    - End-to-end connections
    - TCP, UDP
    - TCP (Transmission control protocol): Ensures reliable communication. Makes sure not only your packet arrives, but it arrives consitently
+     - Established 3-way connection (3-way handshake) before sending data (SYN / SYN + ACK + ACK)
+     - Used when data consistency is more important than speed
    - UDP (User datagram protocol): Faster, but less reliable
+     - Doesn't establish 3-way connection before sending data
+     - Doesn't guarantee the delivery or order of the packets
+     - Used for time sensitive communications (e.g., video calls, live streaming)
+     - Used when speed is more important than data loss
 
 5. Session layer: Maintains connection and is responsible for controlling ports and sessions
 
@@ -397,3 +411,32 @@ How long it takes to handle a single request
 
    - End user layer
    - HTTP, FTP, IRC, SSH, DNS
+     - DNS (Domain name system): Transforms human-friendly names into IP addresses
+
+### 5.3 Application layer (HTTP, WebSockets, WebRTC, MQTT, etc)
+
+- HTTP: HyperText Transfer Protocol:
+
+  - Request/response protocol
+  - A conversation with no memory. Each interaction is separate with no recollection of the past (stateless)
+  - Each request contains the necessary information
+
+- Websockets: Realtime communcation:
+
+  - Two-way communication
+  - Single, long-live connection
+  - Used for live applications: chat, sport updates, stock market feeds. (where the action never stops)
+
+#### 5.3.1 Email related protocols
+
+- SMTP: Email transmission across the internet
+- IMAP (Internet message access protocol): Used to retrieve emails from a server
+- POP3 (Post office protocol version 3): Used for downloading emails from a server
+
+#### 5.3.2 File transfer
+
+- FTP (File transfer protocol): Transferring files over the internet (e.g., uploading files to a server, download files from a server)
+- SSH (Secure shell): Command-line login and file transfer
+- WebRTC: Enables browser-to-browser applications for voice calling, video chat, and file sharing (e.g., video chats)
+- MQTT: Lightweight messaging protocol for devices with low processing power (e.g.,IoT devices)
+- RPC (Remote procedure call): Executing code in one machine from another as if it were from the original machine
