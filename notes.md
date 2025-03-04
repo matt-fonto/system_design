@@ -640,3 +640,40 @@ What about when the cache is full?
 - Distorting proxies: provides an incorret original IP to the destination server
   - Similar to anonymous proxing, but with purposeful IP misinformation
 - High-anonymity proxy: ensure maximum anonymity
+
+## 9. Load balancers
+
+### 9.1 Load balancers algorithms
+
+1. Round robin: each server in the pool gets a request in sequential, rotating order
+
+   - Good for: servers with similar specifications and when the load is uniformally distributable
+
+2. Last connection: directs traffic to the server with the fewest active connections
+
+   - Good for: long tasks or when the load isn't evenly distributed
+
+3. Least response time: chooses the server with the lowest response time and fewest active connections
+
+   - Good for: providing the fastest response to requests
+
+4. IP Hashing: decides the server based on the hash of the client's IP address.
+
+   - Good for: session persistence and when there's the need for the client to connect consistently to the same server
+
+5. Weighted algorithms: servers are assigned weigths (typically based on performance) and servers that have the most capacity handle most requests
+
+   - Good for: servers in the same pool who have different capabilities
+
+6. Geographic: directs requests to servers closest to the client geographically
+
+   - Good for: global servers that need low latency
+
+### 9.2 Health check
+
+- It's important to measure the health of servers to ensure that the load balancer only forwards requests to online and responsive servers
+- What about the situation when the load balancer goes down?
+  - The load balancer is very effective in distributing traffic, however, it is, by its nature, a single-point of failure
+  - How to solve it?
+    - 1. Redundant load balancing
+    - 2. Health checks and monitoring of the load balancers themselves
