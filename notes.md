@@ -611,3 +611,32 @@ What about when the cache is full?
 - Load balancing
 
 ### 8.2 Types of proxy servers
+
+- Forward proxy: sits in front of clients and is used to send requests to other servers
+  - Often used within internal networks to control internet access
+  - Acts as a middle-layer between client and server
+  - Hides the IP of the client, and shows its own IP to the receiving server
+  - Examples:
+    - Instagram proxies: managing multiple accounts without getting flagged
+    - Internet use control
+    - Caching
+    - Anonymizing web access
+- Reverse proxy: sits in front of one or many web servers intercepting requests from the internet
+  - Used for load balancing, web acceleration and as security layer
+  - While a forward proxy hides the client identity, a reverse proxy hides the server identity (or the existence of multiple servers behind it)
+  - Distributes requests across multiple servers (load balancing)
+  - Examples:
+    - Load balancers
+      - Spread requests effectively
+      - Increases capacity and reliability of applications
+    - CDNs
+    - firewalls (web application firewalls)
+- Open proxy: allows any user to connect and utilize the proxy server
+  - Often used to anonymize web browsing and bypass content restrictions
+- Transparent proxy: passes along requests and resources without modifying them. It's visible to the client
+  - Often used for caching and content filtering
+- Anonymous proxy: doesn't show the IP
+  - Used for anonymous browsing
+- Distorting proxies: provides an incorret original IP to the destination server
+  - Similar to anonymous proxing, but with purposeful IP misinformation
+- High-anonymity proxy: ensure maximum anonymity
