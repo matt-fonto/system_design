@@ -533,9 +533,9 @@ How long it takes to handle a single request
 - Stores a copy of data in a temp storage (cache)
 - By taking this temp data, future requests can be served faster
 
-#### 7.2 Caching types
+### 7.2 Caching types
 
-### 7.2.1. Browser caching
+#### 7.2.1. Browser caching
 
 - This cache is store in a directory on the computer's hard drive managed by the browser
 - Stores HTML, CSS, and JS files on the user's local machine
@@ -544,7 +544,7 @@ How long it takes to handle a single request
   - Cache miss: requested data isn't found in cache. New fetch required
 - X-Cache header: tells if cache was hit or no
 
-### 7.2.2. Server caching
+#### 7.2.2. Server caching
 
 - Frequently accessed data is stored on the server
 - Either stored on the server or on a separate cache server
@@ -554,7 +554,7 @@ How long it takes to handle a single request
     Otherwise, server queries the database, returns it to the user and stores it in the cache
   - Tech: Redis
 
-#### 7.2.2.1. Types of cache writing
+##### 7.2.2.1. Types of cache writing
 
 - Write-around cache: data is written directly to permanent storage, by passing the cache
   - Used when write performance is less critical
@@ -570,4 +570,44 @@ What about when the cache is full?
   - First in First Out (FIFO)
   - Least Frequently Used (LFU)
 
-### CDN
+#### 7.2.3. Database caching
+
+- Caching database query results to improve performance of database-driven applications
+- It's done within the db system itself or via an external caching layer (redis, mcache)
+- When a query is made, we first check the query to see if the result is cached
+  - If it is, return cached data (avoid the need to consult db)
+  - If not found, query the database and cache the result
+
+### 7.2.4. CDN
+
+- It's also a type of caching
+- A network of servers distributed geographically
+- Commonly used to serve static files (JS, HTML, CSS, images or videos)
+- Good to ensure high availability and performance for users across the globe
+
+#### Benefits of CDN
+
+- Reduced latency
+- High availability
+- Improved security
+
+#### When should we use origin server instead of CDN?
+
+- Serving dynamic content that changes frequently or is personalized for individual users
+- Handling tasks that require real-time processing or access to up-to-date data
+- Application requires complex server-side logic that can't be replicated or cached by a CDN
+
+## 8. Proxy server
+
+- Act as an intermediary between a client requesting a resource and the server providing the resource
+- Client -> proxy server -> server and back
+
+![proxy-server](image-6.png)
+
+### 8.1 Usage of proxy server
+
+- Caching resources
+- Anonymizing requests
+- Load balancing
+
+### 8.2 Types of proxy servers
