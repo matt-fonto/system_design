@@ -52,6 +52,22 @@
     - [GraphQL](#graphql)
     - [gRPC (Google Remote Procedure Call)](#grpc-google-remote-procedure-call)
   - [6.2 Good Practices](#62-good-practices)
+- [7. Caching and CDN (Content Delivery Networks)](#7-caching-and-cdn-content-delivery-networks)
+  - [7.1 Caching](#71-caching)
+  - [7.2 Caching types](#72-caching-types)
+    - [7.2.1. Browser caching](#721-browser-caching)
+    - [7.2.2. Server caching](#722-server-caching)
+    - [7.2.3. Database caching](#723-database-caching)
+    - [7.2.4. CDN](#724-cdn)
+      - [Benefits of CDN](#benefits-of-cdn)
+      - [When should we use origin server instead of CDN?](#when-should-we-use-origin-server-instead-of-cdn)
+- [8. Proxy server](#8-proxy-server)
+  - [8.1 Usage of proxy server](#81-usage-of-proxy-server)
+  - [8.2 Types of proxy servers](#82-types-of-proxy-servers)
+- [9. Load balancers](#9-load-balancers)
+  - [9.1 Load balancers algorithms](#91-load-balancers-algorithms)
+  - [9.2 Health check](#92-health-check)
+- [10. Databases](#10-databases)
 
 <a name="1-main-concepts-overview"></a>
 
@@ -527,13 +543,19 @@ How long it takes to handle a single request
 
 ## 7. Caching and CDN (Content Delivery Networks)
 
+<a name="71-caching"></a>
+
 ### 7.1 Caching
 
 - Used to improve performance and efficiency
 - Stores a copy of data in a temp storage (cache)
 - By taking this temp data, future requests can be served faster
 
+<a name="72-caching-types"></a>
+
 ### 7.2 Caching types
+
+<a name="721-browser-caching"></a>
 
 #### 7.2.1. Browser caching
 
@@ -543,6 +565,8 @@ How long it takes to handle a single request
   - Cache hit: requested data is found in cache
   - Cache miss: requested data isn't found in cache. New fetch required
 - X-Cache header: tells if cache was hit or no
+
+<a name="722-server-caching"></a>
 
 #### 7.2.2. Server caching
 
@@ -570,6 +594,8 @@ What about when the cache is full?
   - First in First Out (FIFO)
   - Least Frequently Used (LFU)
 
+<a name="723-database-caching"></a>
+
 #### 7.2.3. Database caching
 
 - Caching database query results to improve performance of database-driven applications
@@ -577,6 +603,8 @@ What about when the cache is full?
 - When a query is made, we first check the query to see if the result is cached
   - If it is, return cached data (avoid the need to consult db)
   - If not found, query the database and cache the result
+
+<a name="724-cdn"></a>
 
 ### 7.2.4. CDN
 
@@ -597,6 +625,8 @@ What about when the cache is full?
 - Handling tasks that require real-time processing or access to up-to-date data
 - Application requires complex server-side logic that can't be replicated or cached by a CDN
 
+<a name="8-proxy-server"></a>
+
 ## 8. Proxy server
 
 - Act as an intermediary between a client requesting a resource and the server providing the resource
@@ -604,11 +634,15 @@ What about when the cache is full?
 
 ![proxy-server](image-6.png)
 
+<a name="81-usage-of-proxy-server"></a>
+
 ### 8.1 Usage of proxy server
 
 - Caching resources
 - Anonymizing requests
 - Load balancing
+
+<a name="82-types-of-proxy-servers"></a>
 
 ### 8.2 Types of proxy servers
 
@@ -641,7 +675,12 @@ What about when the cache is full?
   - Similar to anonymous proxing, but with purposeful IP misinformation
 - High-anonymity proxy: ensure maximum anonymity
 
+<a name="9-load-balancers"></a>
+
 ## 9. Load balancers
+
+- Hardware: Citrix
+- Software: HA Proxy, Nginx
 
 ### 9.1 Load balancers algorithms
 
@@ -677,3 +716,5 @@ What about when the cache is full?
   - How to solve it?
     - 1. Redundant load balancing
     - 2. Health checks and monitoring of the load balancers themselves
+
+## 10. Databases
