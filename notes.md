@@ -718,3 +718,32 @@ What about when the cache is full?
     - 2. Health checks and monitoring of the load balancers themselves
 
 ## 10. Databases
+
+- Relational databases are ACID-compliant (Atomicity, Consistency, Isolation, Durability)
+
+  - Atomicity: transactions are all or nothing
+  - Consistency: after transaction, db remains in a consistent state
+  - Isolation: transactions should be independent
+  - Durability: once transaction is committed, it's there to stay
+
+- Non-Relational databases drop the C from ACID, and stay with AID (atomicity, isolation, durability)
+
+### 10.1 Database scaling
+
+- Vertical (scale up): increases the current machine (server) capabilities.
+
+  - Increase CPU power
+  - Adding more RAM
+  - Adding more disk storage
+  - Upgrading network
+
+- Horizontal (scale out): adds more machines (cluster of machines) to the pool of resources
+  - Database sharding: distributing parts (shards) of the data set across multiple servers
+    - Data is split into smaller chunks
+  - Replication: keeping copies of the database spread out
+
+### 10.2 Database performance
+
+- Caching
+- Indexing
+- Query optimization
